@@ -3,9 +3,9 @@ Find the most common letter
 """
 
 
-def function(word: int) -> str:
+def function(word: str) -> str:
     """
-    Prints all numbers divisible by D
+    Find the most common letter
     """
     word_length = len(word)
     outer_index = 0
@@ -14,7 +14,7 @@ def function(word: int) -> str:
     current_char = ""
     if word_length > 0:
         most_common_char = word[0]
-        current_char = word
+        # current_char = word
     while outer_index < word_length:
         current_char = word[outer_index]
         current_count = 0
