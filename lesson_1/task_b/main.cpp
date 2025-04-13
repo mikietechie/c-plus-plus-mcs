@@ -37,8 +37,6 @@ string func(long n)
 
 int main(int argc, char const *argv[])
 {
-    cout << power(1, 0) << "\n";
-    return 0;
     long n;
     std::cin >> n;
     std::cout << func(n) << "\n";

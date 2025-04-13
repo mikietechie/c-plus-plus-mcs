@@ -21,7 +21,7 @@ string convert_base_n_to_base_10(string number, int base_n)
 string convert_base_10_to_base_n(string number, int base_n)
 {
     string base_n_number = "";
-    int numerator = stoi(number);
+    int numerator = std::stoi(number);
     while (numerator != 0)
     {
         int remainder = numerator % base_n;

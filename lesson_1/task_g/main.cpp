@@ -1,65 +1,49 @@
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int count(string str, char chr)
-{
-    int n = 0;
-    for (int i = 0; i < str.length(); i++)
-    {
-        if (str[i] == chr)
-        {
-            n++;
-        }
-    }
-    return n;
-}
 
-bool contains(string str, char chr)
-{
-    for (int i = 0; i < str.length(); i++)
+string f(string word, int occurances) {
+    string output;
+    vector<char> characters;
+    for (auto letter : word)
     {
-        if (str[i] == chr)
+        bool skip = false;
+        for (auto character : characters)
         {
-            return 1;
+            if (character == letter)
+            {
+                skip = true;
+                break;
+            }
         }
-    }
-    return 0;
-}
-
-string func(string input, int k)
-{
-    string output = "";
-    for (int i = 0; i < input.length(); i++)
-    {
-        char chr = input[i];
-        if (contains(output, chr))
-        {
+        if (skip) {
             continue;
         }
-        if (count(input, chr) >= k)
+        characters.push_back(letter);
+        int letter_count = 0;
+        for (auto _letter : word)
         {
-            cout << chr << endl;
-            if (output == "")
+            if (_letter == letter)
             {
-                output = chr;
-            }
-            else
-            {
-                output = output + " " + chr;
+                letter_count++;
             }
         }
+        if (occurances <= letter_count)
+        {
+            output = output + letter  + ' ';
+        }
     }
-
     return output;
 }
 
 int main(int argc, char const *argv[])
 {
-    string input;
-    std::cin >> input;
-    int k;
-    std::cin >> k;
-    std::cout << func(input, k) << std::endl;
+    string word;
+    std::cin >> word;
+    int occurances;
+    std::cin >> occurances;
+    std::cout << f(word, occurances) << std::endl;
     return 0;
 }
