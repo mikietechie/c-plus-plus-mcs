@@ -1,28 +1,34 @@
-#include <string>
-#include <cstring>
 #include <iostream>
-#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
 using namespace std;
-
-char func(string input)
-{
-    for (int i = 0; i < input.length(); i++)
-    {
-        string chr = to_string(i);
-        if (strstr(input.c_str(), chr.c_str()) == 0)
-        {
-            return chr[0];
-        }
-    }
-    return ' ';
-}
 
 int main(int argc, char const *argv[])
 {
     int length;
     std::cin >> length;
-    string input;
-    std::cin >> input;
-    std::cout << func(input) << endl;
+    vector<int> digits;
+    for (int i = 0; i < length; i++)
+    {
+        int digit;
+        std::cin >> digit;
+        digits.push_back(digit);
+    }
+    for (auto digit : digits)
+    {
+        int count = 0;
+        for (auto _digit : digits)
+        {
+            if (digit == _digit)
+            {
+                count++;
+            }
+        }
+        if (count == 1)
+        {
+            std::cout << digit << std::endl;
+            break;
+        }
+    }
     return 0;
 }
