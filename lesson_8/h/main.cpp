@@ -18,16 +18,17 @@ int f(int num)
 
 int main(int argc, char const *argv[])
 {
-    int num, other_num;
+    int num, k = 1, n = 1;
     std::cin >> num;
-    int k = f(num);
     for (int i = 0; i <= num; i++)
     {
-        if (f(i) == k)
+        int f_i = f(i);
+        if (f_i > k)
         {
-            other_num = i;
+            k = f_i;
+            n = i;
         }
     }
-    std::cout << k << ' ' << other_num << std::endl;
+    std::cout << k << ' ' << n << std::endl;
     return 0;
 }
