@@ -7,17 +7,7 @@ dirs = [
     "250320",
 ]
 
-cpp = """
-#include <iostream>
-using namespace std;
-
-int main(int argc, char const *argv[])
-{
-    return 0;
-}
-
-"""
-cpp = """
+CPP_BOILERPLATE = """
 #include <iostream>
 using namespace std;
 
@@ -28,7 +18,7 @@ int main(int argc, char const *argv[])
 
 """
 
-py = """
+PY_BOILERPLATE = """
 def main():
     ""
     ans = None
@@ -49,10 +39,10 @@ for _dir in dirs:
             "w",
             encoding="UTF-8",
         ) as f:
-            f.write(cpp)
+            f.write(CPP_BOILERPLATE)
         with open(
             f"{task_path}{os.sep}main.py",
             "w",
             encoding="UTF-8",
         ) as f:
-            f.write(py)
+            f.write(PY_BOILERPLATE)
