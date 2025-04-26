@@ -1,0 +1,30 @@
+The task of V. Snow White and P. Gnomes
+Input file name:
+Standard input
+Output file name:
+Standard output
+Time limit:
+2 seconds
+Memory limit:
+256 mebibytes
+"No dwarfs, but some kind of punishment!" thought Snow White, once again trying
+to put the dwarves to sleep. If you put one down, the other one is already awake! And so on all
+night.
+Snow White has dwarfs, and they are all very different. She knows that it takes a few minutes to
+put the ith dwarf to bed, and after that he will sleep for exactly b minutes.
+Help Snow White find out if she can get at least a moment of rest when
+All the dwarves will sleep, and if so, in what order should
+the dwarves be put to sleep?
+For example, let's say there are only two dwarfs, a1 = 1, b1 = 10, a2 = 10, b2 = 20. If
+Snow White will first start laying the first dwarf, then she will need as many
+10 minutes to put the second one to bed, and during that time the first one will wake up. If she
+starts with the second dwarf, then she will have time to put the first one down - and get as much as 10 minutes
+of rest while both are asleep.
+Input data format
+The first row of the input data contains the number n |1 n < 105|. The second line
+contains the numbers a1,a2,,an, the third contains the numbers b1, b2,...,bn |1 a1,b, < 10°.
+Output data format
+Print out the numbers and the order in which you need to put the dwarves to
+sleep in order to get at least a minute of rest. If there are several possible answers, print any
+of them. If Snow White can't rest, print the number
+-1.
