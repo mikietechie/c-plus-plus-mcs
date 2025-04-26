@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <cmath>
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -8,7 +8,8 @@ int main(int argc, char const *argv[])
     int length;
     std::cin >> length;
     vector<int> digits;
-    int maximum = 0;
+    int minimum = pow(10, 9);
+    int maximum = minimum * -1;
     for (int i = 0; i < length; i++)
     {
         int digit;
@@ -17,8 +18,12 @@ int main(int argc, char const *argv[])
         if (digit > maximum)
         {
             maximum = digit;
+        } else if (digit < minimum) {
+            minimum = digit;
         }
+
     }
+    // std::cout << minimum << "\t:\t" << maximum << std::endl;
     for (int i = 0; i < maximum; i++)
     {
         bool found = false;

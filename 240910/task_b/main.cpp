@@ -1,30 +1,25 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
-
-long power(long n, long k)
-{
-    long v = 1;
-    while (k > 0)
-    {
-        v *= n;
-        k--;
-    }
-    return v;
-}
 
 string func(long n)
 {
     long i = 0;
     string output = "";
-    const long l = power(10, 9);
+    const long l = pow(10, 9);
     while (1)
     {
-        long v = power(n, i);
+        long v = pow(n, i);
         // std::cout << "v " << v << "\n";
         if (v < l)
         {
-            output = output + " " + std::to_string(v);
+            string join = " ";
+            if (output == "")
+            {
+                join = "";
+            }        
+            output = output + join + std::to_string(v);
         }
         else
         {
