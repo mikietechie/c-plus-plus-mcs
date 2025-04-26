@@ -1,23 +1,32 @@
 #include <iostream>
 using namespace std;
 
-int f(int a, int b, int d)
+long f(long a, long b, long d)
 {
-    int n = a + d;
-    if (a > b)
+    if (a == b)
     {
-        n = a - d;
+        return b;
     }
-    if (n >= b)
+
+    if (b > a)
     {
-        n = b;
+        if (a + d >= b)
+        {
+            return b;
+        }
+        return a + d;
     }
-    return n;
+
+    if (a - d <= b)
+    {
+        return b;
+    }
+    return a - d;
 }
 
 int main(int argc, char const *argv[])
 {
-    int a, b, d;
+    long a, b, d;
     cin >> a >> b >> d;
     cout << f(a, b, d) << "\n";
     return 0;
