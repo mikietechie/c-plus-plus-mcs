@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
     long long n;
     std::cin >> n;
     auto text = "YES";
-    for (long long i = 2; i <= (ceil(sqrt(n)) +1) && i < n; i++)
+    for (long long i = 2; i*i <= n; i++)
     {
         if (n % i == 0)
         {
@@ -16,6 +16,11 @@ int main(int argc, char const *argv[])
             break;
         }
     }
+    if (n ==1)
+    {
+        text = "NO";
+    }
+    
     std::cout << text << std::endl;
     return 0;
 }

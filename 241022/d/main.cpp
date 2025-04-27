@@ -1,19 +1,35 @@
-
 #include <iostream>
 using namespace std;
 
-int main(int argc, char const *argv[])
+using long_int = long long;
+
+int main()
 {
-    int num;
+    long_int num;
     std::cin >> num;
-    int count = 1;
-    for (int i = 1; i < num; i++)
+    long_int var1 = 0, var2 = 0, var3 = 1;
+    while (var3 * var3 <= num)
     {
-        if (num % i == 0)
+        if (num % var3 == 0)
         {
-            count++;
+            var1 += 1;
         }
+        if (var3 * var3 == num)
+        {
+            var2 = 1;
+        }
+        var3 += 1;
     }
-    std::cout << count << std::endl;
+    long_int ans;
+    if (var2 == 1)
+    {
+        ans = 2 * var1 - 1;
+    }
+    else
+    {
+        ans = 2 * var1;
+    }
+    std::cout << ans << "\n";
+
     return 0;
 }

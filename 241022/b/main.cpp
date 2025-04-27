@@ -1,23 +1,23 @@
-
 #include <iostream>
 using namespace std;
 
-struct Point
-{
-    int x;
-    int y;
-};
+using very_long_num = long long;
 
-int main(int argc, char const *argv[])
+very_long_num get_greatest_common_divisor(very_long_num x_1, very_long_num y_1)
 {
-    Point p1, p2;
-    std::cin >> p1.x >> p1.y;
-    std::cin >> p2.x >> p2.y;
-    int k;
-    // for (int i = 0; i < count; i++)
-    // {
-    //     /* code */
-    // }
-    
-    return 0;
+    if (y_1 == 0)
+    {
+        return x_1;
+    }
+    return get_greatest_common_divisor(y_1, x_1 % y_1);
+}
+
+int main()
+{
+    very_long_num x_1, y_1, x_2, y_2;
+    std::cin >> x_1 >> y_1;
+    std::cin >> x_2 >> y_2;
+    very_long_num ans = get_greatest_common_divisor((max(x_1, x_2) - min(x_1, x_2)), (max(y_1, y_2) - min(y_1, y_2)));
+    ans += 1; // include the points
+    std::cout << ans << "\n";
 }
