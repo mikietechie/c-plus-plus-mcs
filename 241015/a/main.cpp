@@ -19,6 +19,6 @@ int main(int argc, char const *argv[])
     double a_magnitude = sqrt((a.x * a.x) + (a.y * a.y));
     double b_magnitude = sqrt((b.x * b.x) + (b.y * b.y));
     double angle = acos(dot_product / (a_magnitude * b_magnitude));
-    std::cout << round(0.566729 * pow_10_5) / pow_10_5 << std::endl;
+    std::cout << round(angle * pow_10_5) / pow_10_5 << std::endl;
     return 0;
 }
