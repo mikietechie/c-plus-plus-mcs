@@ -1,15 +1,20 @@
-"""...."""
+# Online Python - IDE, Editor, Compiler, Interpreter
+# a, b, x1, x2 = map(int, input().split())
 
-a, b, x1, x2 = list(map(int, input().split()))
+# if(x1>x2):
+#  print(a+1/b)
+# else:
+#  print(-(a+1/b))
 
 
-def func(x: int):
+def main():
     """..."""
-    return (a * x) + (x / b)
+    a, b, x_1, x_2 = [int(i) for i in input().split()]
+    if x_1 > x_2:
+        print(a + 1 / b)
+    else:
+        print(-(a + 1 / b))
 
 
-ans = func(x1) - func(x2)
-if isinstance(ans, float) and (ans == int(ans)):
-    ans = int(ans)
-
-print(ans)
+if __name__ == "__main__":
+    main()
