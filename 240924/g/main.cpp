@@ -1,8 +1,12 @@
-
 #include <iostream>
+
 using namespace std;
 
-int main(int argc, char const *argv[])
+int main()
 {
+    long long n;
+    cin >> n;
+    cout << "First";
+
     return 0;
 }

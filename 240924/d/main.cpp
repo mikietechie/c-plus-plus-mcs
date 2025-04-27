@@ -1,8 +1,20 @@
-
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <iterator>
+#include <map>
+#include <set>
+
 using namespace std;
 
-int main(int argc, char const *argv[])
+int main()
 {
+    long long n;
+    cin >> n;
+
+    if (n % 2 == 0)
+        cout << "Second";
+    else
+        cout << "First";
     return 0;
 }
