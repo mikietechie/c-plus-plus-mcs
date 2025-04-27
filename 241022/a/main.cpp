@@ -1,26 +1,53 @@
+// Used AI
 
 #include <iostream>
-#include <cmath>
+#include <tuple>
+
 using namespace std;
 
-struct Point
+tuple<int, int, int> extended_gcd(int a, int b)
 {
-    int x;
-    int y;
-};
+    if (b == 0)
+    {
+        return make_tuple(a, 1, 0);
+    }
+    else
+    {
+        int gcd, x1, y1;
+        tie(gcd, x1, y1) = extended_gcd(b, a % b);
+        int x = y1;
+        int y = x1 - (a / b) * y1;
+        return make_tuple(gcd, x, y);
+    }
+}
 
-struct Vector
+pair<int, int> find_xy(int A, int B)
 {
-    Point a;
-    Point b;
-};
+    int gcd, X, Y;
+    tie(gcd, X, Y) = extended_gcd(A, B);
+    if (gcd != 1)
+    {
+        return make_pair(0, 0);
+    }
+    else
+    {
+        // Check if X and Y are within bounds
+        if (X >= -10000 && X <= 10000 && Y >= -10000 && Y <= 10000)
+        {
+            return make_pair(X, Y);
+        }
+        else
+        {
+            return make_pair(0, 0); // No valid solution within constraints
+        }
+    }
+}
 
-int main(int argc, char const *argv[])
+int main()
 {
-    double pow_10_5 = pow(10, 5);
-    Vector v1, v2;
-    // Vector a, b;
-    std::cin >> v1.a.x >> v1.a.y >> v1.b.x >> v1.b.y;
-    std::cin >> v2.a.x >> v2.a.y >> v2.b.x >> v2.b.y;
+    int A, B;
+    std::cin >> A >> B;
+    auto [X, Y] = find_xy(A, B);
+    std::cout << X << " " << Y << endl; // Output: X = 0, Y = 0 (since gcd(35,15)=5≠1)
     return 0;
 }
