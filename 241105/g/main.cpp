@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -5,30 +6,31 @@
 
 using namespace std;
 
-vector<int> find_powers(int p, int a, int l, int r) {
-    vector<int> result;
+vector<int> tsvaga_masimba(int p, int a, int l, int r) {
     if (a == 0) {
-        if (l <= 1 && 1 <= r) result.push_back(1);
-        if (l <= 0 && 0 <= r) result.push_back(0);
-        return result;
+        vector<int> res;
+        if (l <= 1 && 1 <= r) res.push_back(1);
+        if (l <= 0 && 0 <= r) res.push_back(0);
+        return res;
     }
 
-    // Optimized memory usage with limited storage
+    vector<int> result;
     unordered_set<int> seen;
-    seen.reserve(100);  // Since output is limited to 100 numbers
-    long long current = 1;
+    long long current = 1;  // a^0 mod p = 1
     
+    // Pre-allocate space for the common case
+    result.reserve(100);
+    seen.reserve(100);
+
     while (true) {
         if (l <= current && current <= r) {
             result.push_back(current);
         }
         
-        if (seen.count(current)) break;
         seen.insert(current);
         current = (current * a) % p;
         
-        // Early exit if we've found all possible numbers
-        if (seen.size() >= p) break;  // Shouldn't happen per problem constraints
+        if (seen.count(current)) break;
     }
 
     sort(result.begin(), result.end());
@@ -42,18 +44,16 @@ int main() {
     int p, a, l, r;
     cin >> p >> a >> l >> r;
 
-    vector<int> powers = find_powers(p, a, l, r);
+    vector<int> masimba = tsvaga_masimba(p, a, l, r);
 
-    // Fast output
-    if (!powers.empty()) {
-        cout << powers[0];
-        for (size_t i = 1; i < powers.size(); ++i) {
-            cout << ' ' << powers[i];
+    // Fast output without iostream overhead
+    if (!masimba.empty()) {
+        cout << masimba[0];
+        for (size_t i = 1; i < masimba.size(); ++i) {
+            cout << ' ' << masimba[i];
         }
     }
     cout << '\n';
 
     return 0;
 }
-
-// has error

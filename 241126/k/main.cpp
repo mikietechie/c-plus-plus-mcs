@@ -1,24 +1,25 @@
 #include <iostream>
 using namespace std;
 
-int factorial(int n)
+long long combinations(int n, int k)
 {
-    if (n == 1 || n == 0)
+    if (k > n)
+        return 0;
+    if (k > n - k)
+        k = n - k; // C(n, k) == C(n, n-k)
+    long long result = 1;
+    for (int i = 0; i < k; ++i)
     {
-        return 1;
+        result = result * (n - i) / (i + 1);
     }
-    return n * factorial(n - 1);
+    return result;
 }
 
-int ncr(int n, int r)
+int main()
 {
-    return factorial(n) / (factorial(n - r) * factorial(r));
-}
-
-int main(int argc, char const *argv[])
-{
-    int n, r;
-    std::cin >> n >> r;
-    std::cout << ncr(n, r) << std::endl;
+    int n, k;
+    cin >> n >> k;
+    long long result = combinations(n, k);
+    cout << result << endl;
     return 0;
 }

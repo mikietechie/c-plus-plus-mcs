@@ -16,18 +16,18 @@ bool fff(const string &s)
     {
         return false;
     }
-    vector<bool> dp_prev(n, false);
-    vector<bool> dp_curr(n, false);
+    vector<bool> jwwk_prev(n, false);
+    vector<bool> jwwk_curr(n, false);
     vector<bool> is_palindrome(n, false);
 
     for (int i = 0; i < n; ++i)
     {
-        dp_prev[i] = true;
+        jwwk_prev[i] = true;
     }
 
     for (int i = 0; i < n - 1; ++i)
     {
-        dp_curr[i] = (s[i] == s[i + 1]);
+        jwwk_curr[i] = (s[i] == s[i + 1]);
     }
 
     for (int len = 3; len <= n; ++len)
@@ -35,19 +35,19 @@ bool fff(const string &s)
         for (int i = 0; i + len <= n; ++i)
         {
             int j = i + len - 1;
-            dp_curr[i] = (s[i] == s[j]) && dp_prev[i + 1];
+            jwwk_curr[i] = (s[i] == s[j]) && jwwk_prev[i + 1];
         }
-        swap(dp_prev, dp_curr);
+        swap(jwwk_prev, jwwk_curr);
     }
 
-    fill(dp_prev.begin(), dp_prev.end(), false);
-    dp_prev[0] = true;
+    fill(jwwk_prev.begin(), jwwk_prev.end(), false);
+    jwwk_prev[0] = true;
 
     for (int i = 2; i <= n; i += 2)
     {
         for (int j = i - 2; j >= 0; j -= 2)
         {
-            if (dp_prev[j])
+            if (jwwk_prev[j])
             {
                 bool is_pal = true;
                 int left = j, right = i - 1;
@@ -61,14 +61,14 @@ bool fff(const string &s)
                 }
                 if (is_pal)
                 {
-                    dp_prev[i] = true;
+                    jwwk_prev[i] = true;
                     break;
                 }
             }
         }
     }
 
-    return dp_prev[n];
+    return jwwk_prev[n];
 }
 
 int main()

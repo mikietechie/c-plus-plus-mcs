@@ -1,23 +1,33 @@
 #include <iostream>
+#include <vector>
+
 using namespace std;
 
-int main(int argc, char const *argv[])
+long long count_ways(int n)
 {
-    int r = 2, b = 3, k = 0, l, n;
-    std::cin >> l;
-    for (int ri = 0; ri <= l / r; ri++)
+    if (n == 0)
+        return 1; // Base case: empty row counts as 1 way
+    if (n < 0)
+        return 0; // Invalid case
+
+    vector<long long> dp(n + 1, 0);
+    dp[0] = 1; // Empty row
+
+    for (int i = 1; i <= n; ++i)
     {
-        int reds = r * ri;
-        for (int bi = 0; bi <= l / b; bi++)
-        {
-            int blues = b * bi;
-            int _l = reds + blues;
-            if (_l == l)
-            {
-                k++;
-            }
-        }
+        if (i >= 2)
+            dp[i] += dp[i - 2]; // Add red brick (2dm)
+        if (i >= 3)
+            dp[i] += dp[i - 3]; // Add blue brick (3dm)
     }
-    std::cout << k << std::endl;
+
+    return dp[n];
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    cout << count_ways(n) << endl;
     return 0;
 }

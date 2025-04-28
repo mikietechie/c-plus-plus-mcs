@@ -1,9 +1,5 @@
+from decimal import Decimal
 
-def main():
-    ""
-    ans = None
-    print(ans)
-
-if __name__ == "__main__":
-    main()
-
+n1 = Decimal(input())
+n2 = Decimal(input())
+print(n1 * n2)
