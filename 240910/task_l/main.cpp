@@ -1,45 +1,33 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <cmath>
 using namespace std;
 
+using ll = long long;
+
 int main(int argc, char const *argv[])
 {
-    int length;
-    std::cin >> length;
-    vector<int> digits;
-    int minimum = pow(10, 9);
-    int maximum = minimum * -1;
-    for (int i = 0; i < length; i++)
-    {
-        int digit;
-        std::cin >> digit;
-        digits.push_back(digit);
-        if (digit > maximum)
-        {
-            maximum = digit;
-        } else if (digit < minimum) {
-            minimum = digit;
-        }
+    ll count;
+    ll largest = pow(10, 9);
+    std::cin >> count;
+    std::vector<ll> digits;
 
-    }
-    // std::cout << minimum << "\t:\t" << maximum << std::endl;
-    for (int i = 0; i < maximum; i++)
+    for (ll i = 0; i < count; i++)
     {
-        bool found = false;
-        for (int digit : digits)
-        {
-            if (digit == i)
-            {
-                found = true;
-            }
-        }
-        if (found)
-        {
-            continue;
-        }
-        std::cout << i << std::endl;
-        break;
+        ll ai;
+        std::cin >> ai;
+        digits.push_back(ai);
+        // largest = std::max(largest, ai);
     }
+    for (ll i = 0; i < largest; i++)
+    {
+        if (std::find(digits.begin(), digits.end(), i) == digits.end())
+        {
+            std::cout << i << std::endl;
+            break;
+        }
+    }
+
     return 0;
 }

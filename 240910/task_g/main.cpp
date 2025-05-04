@@ -1,11 +1,13 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-
-string f(string word, int occurances) {
-    string output;
+vector<char> f(string word, int occurances)
+{
+    // string output;
+    vector<char> output;
     vector<char> characters;
     for (auto letter : word)
     {
@@ -18,7 +20,8 @@ string f(string word, int occurances) {
                 break;
             }
         }
-        if (skip) {
+        if (skip)
+        {
             continue;
         }
         characters.push_back(letter);
@@ -32,9 +35,10 @@ string f(string word, int occurances) {
         }
         if (occurances <= letter_count)
         {
-            output = output + letter  + ' ';
+            output.push_back(letter);
         }
     }
+    sort(output.begin(), output.end());
     return output;
 }
 
@@ -44,6 +48,11 @@ int main(int argc, char const *argv[])
     std::cin >> word;
     int occurances;
     std::cin >> occurances;
-    std::cout << f(word, occurances) << std::endl;
+    vector<char> output = f(word, occurances);
+    for (auto letter : output)
+    {
+        std::cout << letter << " ";
+    }
+    // std::cout << std::endl;
     return 0;
 }
