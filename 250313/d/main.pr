@@ -1,19 +1,37 @@
 function sum (id, pr, n, a):
+    lo := id * n / pr
+    hi := (id + 1) * n / pr
     s := 0
-    i := id
-    while i < n:
+    x := 0
+    y := 0
+    z := 0
+    for i := lo until hi:
         s += a[i]
-        i += pr
-
-    left := id * 2 + 1
-    right := left + 1
-    if left < pr:
-        s += receive (left)
-    if right < pr:
-        s += receive (right)
-
-    send ((id - 1) / 2, s)
-
+    for i := lo until hi:
+        y += a[i]
+        if y < 0:
+            y := 0
+        if y > z:
+            z := y
+    for i := lo until hi:
+        x += a[lo + hi - 1 -i]
+        if x < 0:
+            x := 0
+    send (0, z, x, s, y)
     if id == 0:
-        print (s)
-
+        ans := 0
+        for i := 0 until pr:
+            q := receive (i)
+            if q > ans:
+                ans := q
+        ans2 := 0
+        for i := 0 until pr:
+            w := receive(i)
+            if ans2 + w > ans:
+                ans := ans2 + w
+            sum := receive(i)
+            ans2 += sum
+            v := receive(i)
+            if v > ans2:
+                ans2 := v
+        print (ans)

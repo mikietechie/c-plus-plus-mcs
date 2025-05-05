@@ -1,0 +1,24 @@
+function sum (id, pr, n, a):
+    lo := id * n / pr
+    hi := (id + 1) * n / pr
+    ss := 0
+    for i := lo until hi:
+        ss += a[i]
+    send (0, ss)
+    if id == 0:
+        sss := 0
+        for i := 0 until pr:
+            send (i, sss)
+            sss += receive (i)
+    s := receive (0)
+    c := 0
+    for i := lo until hi:
+        s += a[i]
+        if s > i + 1:
+            c += s - i - 1
+    send (0, c)
+    if id == 0:
+        ans := 0
+        for i := 0 until pr:
+            ans += receive (i)
+        print (ans)
