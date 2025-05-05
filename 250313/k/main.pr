@@ -1,0 +1,7 @@
+function sum (id, pr, n, a):
+    s := 0
+    i := id
+    while i < n:
+        print (s)
+        s += a[i]
+        i += pr
